@@ -1,0 +1,2 @@
+keyfile: ["keyfile.pem", "keyfile2.pem"]
+openpgpcard: ["auth", "sign"]

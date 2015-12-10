@@ -7,7 +7,7 @@ import binascii
 import math
 import yaml
 from onionbalance import util
-from OpenPGPyCard.OpenPGPCard import OpenPGPCard
+import OpenPGPyCard
 
 
 
@@ -77,13 +77,13 @@ class Key:
             return None
 
     def _get_pubkey_openpgpcard(self):
-        card = OpenPGPCard(transmitter="pcscd")
+        card = OpenPGPyCard.Card(transmitter="pcscd")
         pubkey = card.get_pubkey(self.house)
         #card.disconnect() # Breaks everything somehow
         return pubkey
 
     def _sign_digest_openpgpcard(self, digest):
-        card = OpenPGPCard()
+        card = OpenPGPyCard.Card()
         card.verify_pin2(batch=True) # TODO: make pin available in map
         signature_bytes = card.sign_digest(digest, self.house)
         #card.disconnect()

@@ -6,7 +6,7 @@ import base64
 import binascii
 import math
 import yaml
-from onionbalance import util
+import util
 import OpenPGPyCard
 
 
